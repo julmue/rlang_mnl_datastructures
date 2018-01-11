@@ -137,11 +137,16 @@ m + 1:2
 # all() and any()
 
 all(T,T,T,T,F)
+#> FALSE
+
 any(T,T,T,T,F)
+#> TRUE 
 
 all(2<1:3)
-any(2<1:3)
+#> FALSE
 
+any(2<1:3)
+#> TRUE
 
 # -----------------------------------------------------------------------------
 # Vectorized Operations (Mapping a function over a vector)
@@ -153,6 +158,8 @@ any(2<1:3)
 # that are vecorized, meaning that a function applied to a vector is applied individually
 # to each element.
 
+v <- 2*(1:5)
+#> 2  4  6  8 10
 
 # -----------------------------------------------------------------------------
 # Filtering
@@ -173,12 +180,28 @@ z <- subset(z, z %% 2 == 0 )
 
 
 # -----------------------------------------------------------------------------
+# Selection
+# Filtering consists of extracting elements of a Vector that satisfy certain conditions.
+# The selection function which() returns the positions of the elements that satisfy the condition.
+
+which(3 == rep(1:3,3))
+#> 3 6 9
+
+# -----------------------------------------------------------------------------
 # Testing Vector Equality
 #
 # == doesn't work
+x <- 1:3
+y <- 1:3
 
-all(x == z)
+x == y
+#> TRUE TRUE TRUE
+
+all(x == y)
+#> TRUE
+
 identical(x,y)
+#> TRUE
 
 
 # -----------------------------------------------------------------------------
@@ -196,14 +219,43 @@ x[c("a","c")]
 # remove names
 names(x) <- NULL
 
+
+
+# -----------------------------------------------------------------------------
+# ifelse(): Conditional Replacement
+# The ifelse() Function is a function for conditional replacement.
+# ifelse(b,t,f)
+# b: boolean vector
+# t: replacement if TRUE
+# f: replacement if FALSE
+
+x <- 1:6
+ifelse(x %% 2 == 0, "true", "false")
+#> "false" "true"  "false" "true"  "false" "true" 
+
 # -----------------------------------------------------------------------------
 # Concatenation function: c()
 # - c() casts
 # - c() flattens: Vectors can't be nested
 
 
+# Naming the elements of a vector
+v <- 1:3
+names(v) <- c("a","b","c")
+#> v
+#> a b c
+#> 1 2 3
+
+v["b"]
+#> 2
 
 
+## Removing the names from a vector
+v <- unname(v)
+#> v
+#> 1 2 3 
 
+v <- 1:3
+names(v) <- c("a","b","c")
 
-
+names(v) <- NULL

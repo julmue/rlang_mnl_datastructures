@@ -7,7 +7,7 @@
 #
 # Matrices are homogenous like vectors
 # Matrices are special cases of a more general R type of object: arrays
-# Arrays can be mutlidimensional
+# Arrays can be multidimensional
 #
 # Much of R's power comes from the various operations you can perform
 # on matrices.
@@ -57,7 +57,7 @@ m[,2:3] # second and third column
 m[c(1,3),c(2,4)]
 
 
-# values can be assigned to submatrixes
+# values can be assigned to submatrices
 m <- matrix(1:16, ncol = 4)
 m[c(2,3),c(2,3)] <- matrix(88, ncol = 2)
 #       [,1] [,2] [,3] [,4]
@@ -87,7 +87,7 @@ m <- m[m[,2] >= 7,]
 # -----------------------------------------------------------------------------
 # Applying Function to Matrix Rows and Columns
 #
-# One of the most famous and most used feature of R is the+apply() family of functions
+# One of the most famous and most used feature of R is the apply() family of functions
 # - apply()
 # - tapply()
 # - lapply()
@@ -95,7 +95,7 @@ m <- m[m[,2] >= 7,]
 # apply() calls a user-specified function on
 # - each of the rows or
 # - each of the columns of a matrix
-#
+
 # apply(m, dimcode, f, fargs)
 # - m is the matrix
 # - dimcode: 1 for rows, 2 for columns
@@ -103,8 +103,8 @@ m <- m[m[,2] >= 7,]
 # - fargs: optional set of arguments to be supplied to f
 
 m <- matrix(1:16, ncol = 4)
-apply(m,1,mean) # apply to every row
-apply(m,2,mean) # apply to every column
+apply(m,1,mean) # dimcode 1: apply to every row 
+apply(m,2,mean) # dimcode 2: apply to every column
 
 
 # -----------------------------------------------------------------------------
@@ -130,7 +130,10 @@ cbind(matrix(1:16, ncol = 4), rep(666,4)) # add new last column
 # The length of the underlying vector can be taken
 m <- matrix(1:16, ncol = 2)
 length(m)
-attributes(m)
+#> 16
+
+attributes(m) # 8 rows, 2 columnes
+#> 8 2 
 
 # -----------------------------------------------------------------------------
 # Naming Matrix Rows and Columns
